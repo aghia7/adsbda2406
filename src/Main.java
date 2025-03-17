@@ -1,10 +1,11 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
-    // 1 1 2 3 5 8
-    public static int fib(int n) { // Readability is high
+    // 1 1 2 3 5 8 13 21 ...
+
+    public static long fib(int n) {
+        // base case
         if (n <= 1) {
             return 1;
         }
@@ -12,17 +13,16 @@ public class Main {
         return fib(n - 2) + fib(n - 1);
     }
 
-    public static int fibLinear(int n) {
-        int x = 1, y = 1; //
+    public static long fibLinear(int n) {
+        long a = 1, b = 1;
 
-        for (int i = 0; i < n; i++) {
-            int temp = y;
-            y = x + y;
-
-            x = temp;
+        for (int i = 0; i < n - 1; i++) {
+            long temp = b;
+            b = a + b;
+            a = temp;
         }
 
-        return x;
+        return b;
     }
 
     public static int multiply(int a, int b) {
@@ -36,25 +36,19 @@ public class Main {
     }
 
     public static int multiplyRecursive(int a, int b) {
-        return multiplyRecursive(a, b, 0);
-    }
-
-    private static int multiplyRecursive(int a, int b, int k) {
-        if (k >= b) {
+        if (b <= 0) {
             return 0;
         }
 
-        return a + multiplyRecursive(a, b, k + 1);
+        return a + multiplyRecursive(a, b - 1);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int x = sc.nextInt();
-        int y = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
 
-        int res = multiplyRecursive(x, y);
-
-        System.out.println(res);
+        System.out.println(multiplyRecursive(a, b));
     }
 }
