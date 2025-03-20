@@ -9,6 +9,7 @@ public class Main {
 
         int n = sc.nextInt();
 
+        System.out.println("fib(" + n + ") = " + Calculation.fib(n));
         System.out.println("fib(" + n + ") = " + Calculation.fibLinear(n));
     }
 
