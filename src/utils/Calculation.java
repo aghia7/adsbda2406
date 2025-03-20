@@ -1,9 +1,9 @@
 package utils;
 
 public class Calculation {
+    // 0 1 1 2 3 5 8 13 21 34 55 89 ..
     public static long fib(int n) {
-        // base case
-        if (n <= 1) {
+        if (n == 0 || n == 1) { // base case
             return n;
         }
 
@@ -22,25 +22,24 @@ public class Calculation {
         return a;
     }
 
-    public static int multiply(int a, int b) {
+    public static int sum(int[] arr) {
         int s = 0;
-
-        for (int i = 0; i < b; i++) {
-            s += a;
+        for (int i = 0; i < arr.length; i++) {
+            s += arr[i];
         }
 
         return s;
     }
 
-    public static int multiplyRecursive(int a, int b) {
-        return multiplyRecursive(a, b, 0);
+    public static int sumRecursive(int[] arr) {
+        return sumRecursive(arr, 0);
     }
 
-    private static int multiplyRecursive(int a, int b, int i) {
-        if (i >= b) {
+    private static int sumRecursive(int[] arr, int i) {
+        if (i >= arr.length) {
             return 0;
         }
 
-        return a + multiplyRecursive(a, b, i + 1);
+        return arr[i] + sumRecursive(arr, i + 1);
     }
 }
